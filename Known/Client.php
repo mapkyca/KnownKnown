@@ -30,17 +30,11 @@ namespace IdnoPlugins\Known {
 	    if ($parameters['state'] != \Idno\Core\site()->plugins()->get('Known')->getState())
 		throw new \Exception('State value not correct, possible CSRF attempt.');
 		
-	    unset($parameters['state']);
-	    
-	    
-	    // TODO verify code
-	    
-	    
 	    $parameters['client_id'] = $this->key;
 	    $parameters['client_secret'] = $this->secret;
 	    $parameters['grant_type'] = $grant_type;
 	    	    
-	    return \Idno\Core\Webservice::post(\Idno\Core\site()->config()->known['site'] . 'oauth2/token', $parameters);
+	    return \Idno\Core\Webservice::get(\Idno\Core\site()->config()->known['site'] . 'oauth2/access_token', $parameters);
 	    
 	}
 	
