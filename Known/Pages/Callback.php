@@ -19,24 +19,27 @@ namespace IdnoPlugins\Known\Pages {
 		    if ($knownAPI = $known->connect()) {
 
 			if ($response = $knownAPI->getAccessToken('authorization_code', [
-			    'code' => $this->getInput('code'), 
-			    'redirect_uri' => \IdnoPlugins\Known\Main::getRedirectUrl(), 
+			    'code' => $this->getInput('code'),
+			    'redirect_uri' => \IdnoPlugins\Known\Main::getRedirectUrl(),
 			    'state' => \IdnoPlugins\Known\Main::getState()])) {
 
 			    $response = json_decode($response['content']);
-			    
-			    $user = \Idno\Core\site()->session()->currentUser();
-			    $user->known = ['access_token' => $response->access_token];
-			    
-			    $user->save();
-			    \Idno\Core\site()->session()->addMessage('Your Known account was connected.');
+
+			    if ($response->access_token) {
+				$user = \Idno\Core\site()->session()->currentUser();
+				$user->known = ['access_token' => $response->access_token];
+
+				$user->save();
+				\Idno\Core\site()->session()->addMessage('Your Known account was connected.');
+			    } else
+				\Idno\Core\site()->session()->addErrorMessage("No access token returned by request!");
 			}
 		    }
 		}
 	    } catch (\Exception $e) {
 		\Idno\Core\site()->session()->addErrorMessage($e->getMessage());
 	    }
-	    
+
 	    $this->forward('/account/known/');
 	}
 
