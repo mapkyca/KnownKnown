@@ -1,0 +1,1 @@
+<li <?php if ($_SERVER['REQUEST_URI'] == '/account/known/') echo 'class="active"'; ?>><a href="/account/known/">Known Crosspost</a></li>
