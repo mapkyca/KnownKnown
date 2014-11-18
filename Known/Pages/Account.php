@@ -15,13 +15,13 @@
             function getContent()
             {
                 $this->gatekeeper(); // Logged-in users only
-                if ($known = \Idno\Core\site()->plugins()->get('Known Crosspost')) {
+		
+                if ($known = \Idno\Core\site()->plugins()->get('Known')) { 
                     if (!$known->hasKnown()) {
                         if ($knownAPI = $known->connect()) {
                             $login_url = $knownAPI->getAuthenticationUrl(
-				\IdnoPlugins\Known\Main::$AUTHORIZATION_ENDPOINT,
-				\IdnoPlugins\Known\Main::getRedirectUrl(),
-				['response_type' => 'code', 'state' => \IdnoPlugins\Known\Main::getState()] 
+				\Idno\Core\site()->config()->known['site'] . 'oauth2/authorise',
+				['response_type' => 'code', 'state' => \IdnoPlugins\Known\Main::getState(), 'redirect_uri' => \IdnoPlugins\Known\Main::getRedirectUrl()] 
                             );
 			    
                         }
