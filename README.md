@@ -3,7 +3,7 @@ Known -> Known crosspost
 
 This plugin links a user on one known site to a user on another known site, allowing you to cross post (most) content.
 
-Primarily this was written as a test/proof of concept for my OAuth2 Server, but might actually be useful to some people - for example, 
+Primarily this was written as a test/proof of concept for my OAuth2 Server <https://github.com/mapkyca/KnownOAuth2>, but might actually be useful to some people - for example, 
 if you have a corporate known blog and want to post to it from your personal blog.
 
 Usage
