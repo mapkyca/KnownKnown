@@ -28,7 +28,7 @@ namespace IdnoPlugins\Known {
 
 	function registerEventHooks() {
 	    
-	    $types = ['note']; // Currently only note is safe, for some reason - seems like an upstream bug in the api //, 'article', 'image', 'place'];
+	    $types = ['note', 'article', 'place']; // Currently only note is safe, for some reason - seems like an upstream bug in the api //, 'article', 'image', 'place'];
 
 	    // Register syndication services
 	    \Idno\Core\site()->syndication()->registerService('known', function() {
@@ -61,7 +61,7 @@ namespace IdnoPlugins\Known {
 				$object->setPosseLink('known', $content->object->url);
 				$object->save();
 				
-			    } else {
+			    } else { 
 				\Idno\Core\site()->session()->addErrorMessage('There was a problem cross posting to Known');
 				
 			    }
