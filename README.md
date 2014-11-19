@@ -14,6 +14,14 @@ Usage
 * Enter those details into the account on the server you want to post from
 * Go through your standard oauth linking
 
+TODO
+----
+
+* [x] Status posts
+* [x] Text posts
+* [ ] Image posts
+* [ ] Location posts
+
 See
 ---
  * Author: Marcus Povey <http://www.marcus-povey.co.uk> 
