@@ -27,52 +27,57 @@ namespace IdnoPlugins\Known {
 	}
 
 	function registerEventHooks() {
-	    
-	    $types = ['note', 'article', 'place']; 
+
+	    $types = ['note', 'article', 'place', 'image'];
 
 	    // Register syndication services
 	    \Idno\Core\site()->syndication()->registerService('known', function() {
 		return $this->hasKnown();
 	    }, $types);
-	    
+
 	    foreach ($types as $type) {
-		
-		\Idno\Core\site()->addEventHook("post/$type/known",function(\Idno\Core\Event $event) {
-                    $object = $event->data()['object'];
-                    if ($this->hasKnown()) {
-                        if ($knownAPI = $this->connect()) {
-                            $knownAPI->setAccessToken(\Idno\Core\site()->session()->currentUser()->known['access_token']);
-			    
+		\Idno\Core\site()->addEventHook("post/$type/known", function(\Idno\Core\Event $event) {
+		    $object = $event->data()['object'];
+		    if ($this->hasKnown()) {
+			if ($knownAPI = $this->connect()) {
+			    $knownAPI->setAccessToken(\Idno\Core\site()->session()->currentUser()->known['access_token']);
+
 			    $parameters = $_POST;
-			    
+
 			    // Work out action
 			    $action = $parameters['__bTa'];
-			    
+
 			    // Unset some vars that don't make sense in this context
 			    foreach (['syndication', '__bTs', '__bTk', '__bTa'] as $verboten) {
 				unset($parameters[$verboten]);
 			    }
+
+			    // Handle image
+			    if (count($_FILES)) {
+				foreach ($_FILES as $file => $data) {
+				    $parameters[$file] = '@' . $data['tmp_name']
+					    . ';filename=' . $data['name']
+					    . ';type=' . $data['type']
+					
+				    ;
+				}
+			    }
 			    
 			    $result = \Idno\Core\Webservice::post(rtrim(\Idno\Core\site()->config()->known['site'], ' /') . $action . "?access_token={$knownAPI->access_token}", json_encode($parameters), ['Content-Type: application/json', 'Accept: application/json']);
 			    $content = json_decode($result['content']);
-			    
+
 			    if (($result['response'] == 200) && (isset($content->object->url))) {
-				
+				print_r($parameters);
+
 				$object->setPosseLink('known', $content->object->url);
 				$object->save();
-				
-			    } else { 
+			    } else {
 				\Idno\Core\site()->session()->addErrorMessage('There was a problem cross posting to Known');
-				
 			    }
-			    			    
 			}
 		    }
 		});
-		
 	    }
-	    
-	    
 	}
 
 	/**
