@@ -69,6 +69,8 @@ namespace IdnoPlugins\Known {
 			    if (($result['response'] == 200) && (isset($content->object->url))) {
 				$object->setPosseLink('known', $content->object->url);
 				$object->save();
+			    } else if ($result['response'] == 404) {
+				\Idno\Core\site()->session()->addErrorMessage('It doesn\'t look like the remote site has enabled support for this feature!');
 			    } else {
 				\Idno\Core\site()->session()->addErrorMessage('There was a problem cross posting to Known');
 			    }
