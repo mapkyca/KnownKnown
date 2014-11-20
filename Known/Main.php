@@ -28,7 +28,7 @@ namespace IdnoPlugins\Known {
 
 	function registerEventHooks() {
 
-	    $types = ['note', 'article', 'place', 'image'];
+	    $types = ['note', 'article', 'place', 'image', 'event', 'bookmark', 'media'];
 
 	    // Register syndication services
 	    \Idno\Core\site()->syndication()->registerService('known', function() {

@@ -19,8 +19,12 @@ TODO
 
 * [x] Status posts
 * [x] Text posts
-* [ ] Image posts
-* [ ] Location posts
+* [x] Image posts
+* [x] Location posts
+* [x] Bookmarks
+* [x] Checkins
+* [x] Events
+* [x] Audio
 
 See
 ---
