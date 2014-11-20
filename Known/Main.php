@@ -67,8 +67,6 @@ namespace IdnoPlugins\Known {
 			    $content = json_decode($result['content']);
 
 			    if (($result['response'] == 200) && (isset($content->object->url))) {
-				print_r($parameters);
-
 				$object->setPosseLink('known', $content->object->url);
 				$object->save();
 			    } else {
