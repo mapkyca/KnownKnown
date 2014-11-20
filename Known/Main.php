@@ -55,15 +55,11 @@ namespace IdnoPlugins\Known {
 			    // Handle image
 			    if (count($_FILES)) {
 				foreach ($_FILES as $file => $data) {
-				    $parameters[$file] = '@' . $data['tmp_name']
-					    . ';filename=' . $data['name']
-					    . ';type=' . $data['type']
-					
-				    ;
+				    $parameters[$file] = "@{$data['tmp_name']};filename={$data['name']};type={$data['type']}";
 				}
 			    }
 			    
-			    $result = \Idno\Core\Webservice::post(rtrim(\Idno\Core\site()->config()->known['site'], ' /') . $action . "?access_token={$knownAPI->access_token}", json_encode($parameters), ['Content-Type: application/json', 'Accept: application/json']);
+			    $result = \Idno\Core\Webservice::post(rtrim(\Idno\Core\site()->config()->known['site'], ' /') . $action . "?access_token={$knownAPI->access_token}", $parameters, ['Accept: application/json']);
 			    $content = json_decode($result['content']);
 
 			    if (($result['response'] == 200) && (isset($content->object->url))) {
