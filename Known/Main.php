@@ -72,6 +72,14 @@ namespace IdnoPlugins\Known {
 			    } else {
 				\Idno\Core\site()->session()->addErrorMessage('There was a problem cross posting to Known');
 			    }
+			    
+			    // See if we have any messages
+			    if (!empty($content->messages) && is_array($content->messages))
+			    {
+				foreach ($content->messages as $message) {
+				    \Idno\Core\site()->session()->addMessage("Remote site says: " .$message->message, $message->message_type);
+				}
+			    }
 			}
 		    }
 		});
