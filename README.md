@@ -6,6 +6,8 @@ This plugin links a user on one known site to a user on another known site, allo
 Primarily this was written as a test/proof of concept for my OAuth2 Server <https://github.com/mapkyca/KnownOAuth2>, but might actually be useful to some people - for example, 
 if you have a corporate known blog and want to post to it from your personal blog.
 
+Even though it was originally written as an OAuth2 tester, it also supports Known's native signed HTTP api authentication method.
+
 Usage
 -----
 
