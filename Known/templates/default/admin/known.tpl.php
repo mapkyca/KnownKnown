@@ -19,10 +19,15 @@
 	    <div class="control-group">
                 <label class="control-label" for="name">Known site URL</label>
                 <div class="controls">
-                    <input type="url" id="name" placeholder="Site url" class="span4" name="site" value="<?=htmlspecialchars(\Idno\Core\site()->config()->known['site'])?>" >
+                    <input type="url" id="name" placeholder="Site url" class="span4" name="site" value="<?=htmlspecialchars(\Idno\Core\site()->config()->known['site'])?>" required >
                 </div>
+		
+		<hr />
             </div>
             <div class="control-group">
+		<p>
+		    If you plan to connect via <a href="https://github.com/mapkyca/KnownOAuth2" target="_blank">OAuth2</a>, enter the application details below.
+		</p>
                 <label class="control-label" for="name">Client ID</label>
                 <div class="controls">
                     <input type="text" id="name" placeholder="App Key" class="span4" name="appId" value="<?=htmlspecialchars(\Idno\Core\site()->config()->known['appId'])?>" >

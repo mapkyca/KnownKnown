@@ -25,14 +25,20 @@
                 $appId = $this->getInput('appId');
                 $secret = $this->getInput('secret');
 		$site = rtrim($this->getInput('site'), ' /') . '/';
-				
-                \Idno\Core\site()->config->config['known'] = [
-		    'site' => $site,
-                    'appId' => $appId,
-                    'secret' => $secret
-                ];
-                \Idno\Core\site()->config()->save();
-                \Idno\Core\site()->session()->addMessage('Your Known Crosspost application details were saved.');
+		
+		if ($site) {
+
+		    \Idno\Core\site()->config->config['known'] = [
+			'site' => $site,
+			'appId' => $appId,
+			'secret' => $secret
+		    ];
+		    \Idno\Core\site()->config()->save();
+		    \Idno\Core\site()->session()->addMessage('Your Known Crosspost application details were saved.');
+		}
+		else {
+		    \Idno\Core\site()->session()->addErrorMessage('You must enter the site URL of the Known site you want to cross post to');
+		}
                 $this->forward('/admin/known/');
             }
 
