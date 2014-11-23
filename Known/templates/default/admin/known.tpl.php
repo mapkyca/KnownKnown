@@ -2,7 +2,7 @@
 
     <div class="span10 offset1">
         <h1>Known</h1>
-        <?=$this->draw('admin/menu')?>
+	<?= $this->draw('admin/menu') ?>
     </div>
 
 </div>
@@ -19,24 +19,26 @@
 	    <div class="control-group">
                 <label class="control-label" for="name">Known site URL</label>
                 <div class="controls">
-                    <input type="url" id="name" placeholder="Site url" class="span4" name="site" value="<?=htmlspecialchars(\Idno\Core\site()->config()->known['site'])?>" required >
+                    <input type="url" id="name" placeholder="Site url" class="span4" name="site" value="<?= htmlspecialchars(\Idno\Core\site()->config()->known['site']) ?>" required >
                 </div>
-		
+
 		<hr />
             </div>
             <div class="control-group">
-		<p>
-		    If you plan to connect via <a href="https://github.com/mapkyca/KnownOAuth2" target="_blank">OAuth2</a>, enter the application details below.
-		</p>
+		<div class="controls">
+		    <p>
+			If you plan to connect via <a href="https://github.com/mapkyca/KnownOAuth2" target="_blank">OAuth2</a>, enter the application details below.
+		    </p>
+		</div>
                 <label class="control-label" for="name">Client ID</label>
                 <div class="controls">
-                    <input type="text" id="name" placeholder="App Key" class="span4" name="appId" value="<?=htmlspecialchars(\Idno\Core\site()->config()->known['appId'])?>" >
+                    <input type="text" id="name" placeholder="App Key" class="span4" name="appId" value="<?= htmlspecialchars(\Idno\Core\site()->config()->known['appId']) ?>" >
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="name">Client Secret</label>
                 <div class="controls">
-                    <input type="text" id="name" placeholder="Secret Key" class="span4" name="secret" value="<?=htmlspecialchars(\Idno\Core\site()->config()->known['secret'])?>" >
+                    <input type="text" id="name" placeholder="Secret Key" class="span4" name="secret" value="<?= htmlspecialchars(\Idno\Core\site()->config()->known['secret']) ?>" >
                 </div>
             </div>
             <div class="control-group">
@@ -44,7 +46,7 @@
                     <button type="submit" class="btn btn-primary">Save</button>
                 </div>
             </div>
-            <?= \Idno\Core\site()->actions()->signForm('/admin/known/')?>
+	    <?= \Idno\Core\site()->actions()->signForm('/admin/known/') ?>
         </form>
     </div>
 </div>
