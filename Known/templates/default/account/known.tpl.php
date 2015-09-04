@@ -1,13 +1,13 @@
 <div class="row">
 
-    <div class="span10 offset1">
+    <div class="col-offset-10 col-md-offset-1">
         <h3>Known</h3>
 	<?= $this->draw('account/menu') ?>
     </div>
 
 </div>
 <div class="row">
-    <div class="span10 offset1">
+    <div class="col-offset-10 col-md-offset-1">
         <form action="/account/known/" class="form-horizontal" method="post">
 	    <?php
 	    if (empty(\Idno\Core\site()->session()->currentUser()->known)) {
@@ -32,12 +32,12 @@
     		</p>
     		<label class="control-label" for="name">Remote username</label>
     		<div class="controls">
-    		    <input type="text" id="username" placeholder="Username on remote known installation" class="span4" name="username" value="<?= htmlspecialchars(\Idno\Core\site()->session()->currentUser()->known['username']) ?>" >
+    		    <input type="text" id="username" placeholder="Username on remote known installation" class="col-offset-4" name="username" value="<?= htmlspecialchars(\Idno\Core\site()->session()->currentUser()->known['username']) ?>" >
     		</div>
 
     		<label class="control-label" for="name">Remote user's API Key</label>
     		<div class="controls">
-    		    <input type="text" id="known_api_key" placeholder="Secret Key" class="span4" name="known_api_key" value="<?= htmlspecialchars(\Idno\Core\site()->session()->currentUser()->known['known_api_key']) ?>" >
+    		    <input type="text" id="known_api_key" placeholder="Secret Key" class="col-offset-4" name="known_api_key" value="<?= htmlspecialchars(\Idno\Core\site()->session()->currentUser()->known['known_api_key']) ?>" >
     		</div>
     	    </div>
 	    <div class="control-group">
