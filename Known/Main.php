@@ -82,6 +82,7 @@ namespace IdnoPlugins\Known {
 			    } else {
 				\Idno\Core\site()->session()->addErrorMessage('There was a problem cross posting to Known');
 				\Idno\Core\site()->logging->log("API Returned code {$result['response']}");
+				\Idno\Core\site()->logging->log("Details: " . var_export($result, true));
 			    }
 
 			    // See if we have any messages
