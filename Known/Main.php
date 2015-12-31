@@ -77,8 +77,9 @@ namespace IdnoPlugins\Known {
 				$object->setPosseLink('known', $content->object->url);
 				$object->save();
 			    } else if (($result['response'] == 200) && (isset($content->location))) {
-				// New known forward URL
-				$object->setPosseLink('known', $content->location);
+				// New known forward URL (normalised)
+				$location = explode('?', $content->location);
+				$object->setPosseLink('known', $location[0]);
 				$object->save();
 			    } else if ($result['response'] == 404) {
 				\Idno\Core\site()->session()->addErrorMessage('It doesn\'t look like the remote site has enabled support for this feature!');
