@@ -31,8 +31,11 @@ namespace IdnoPlugins\Known\Pages {
 
 				$user->save();
 				\Idno\Core\site()->session()->addMessage('Your Known account was connected.');
-			    } else
+			    } else {
+				error_log("Response is " . var_export($response, true));
+				
 				\Idno\Core\site()->session()->addErrorMessage("No access token returned by request!");
+			    }
 			}
 		    }
 		}
