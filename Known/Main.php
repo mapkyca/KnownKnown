@@ -47,7 +47,7 @@ namespace IdnoPlugins\Known {
 			    $action = $parameters['__bTa'];
 
 			    // Unset some vars that don't make sense in this context
-			    foreach (['syndication', '__bTs', '__bTk', '__bTa'] as $verboten) {
+			    foreach (['syndication', '__bTs', '__bTk', '__bTa', 'forward-to'] as $verboten) {
 				unset($parameters[$verboten]);
 			    }
 
