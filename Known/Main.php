@@ -73,7 +73,12 @@ namespace IdnoPlugins\Known {
 			    $content = json_decode($result['content']);
 
 			    if (($result['response'] == 200) && (isset($content->object->url))) {
+				// Old Known API
 				$object->setPosseLink('known', $content->object->url);
+				$object->save();
+			    } else if (($result['response'] == 200) && (isset($content->location))) {
+				// New known forward URL
+				$object->setPosseLink('known', $content->location);
 				$object->save();
 			    } else if ($result['response'] == 404) {
 				\Idno\Core\site()->session()->addErrorMessage('It doesn\'t look like the remote site has enabled support for this feature!');
