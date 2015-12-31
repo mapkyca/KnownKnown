@@ -22,8 +22,9 @@
                     <input type="url" id="name" placeholder="Site url" class="col-md-4" name="site" value="<?= htmlspecialchars(\Idno\Core\site()->config()->known['site']) ?>" required >
                 </div>
 
-		<hr />
             </div>
+	    <br />
+	    <hr />
             <div class="control-group">
 		<div class="controls">
 		    <p>
