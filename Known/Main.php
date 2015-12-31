@@ -5,7 +5,7 @@ namespace IdnoPlugins\Known {
     class Main extends \Idno\Common\Plugin {
 
 	public static function getRedirectUrl() {
-	    return \Idno\Core\site()->config()->url . 'known/callback';
+	    return \Idno\Core\site()->config()->url . '_known/callback';
 	}
 
 	public static function getState() {
@@ -14,7 +14,7 @@ namespace IdnoPlugins\Known {
 
 	function registerPages() {
 	    // Register the callback URL
-	    \Idno\Core\site()->addPageHandler('known/callback', '\IdnoPlugins\Known\Pages\Callback');
+	    \Idno\Core\site()->addPageHandler('\_known/callback', '\IdnoPlugins\Known\Pages\Callback');
 	    // Register admin settings
 	    \Idno\Core\site()->addPageHandler('admin/known', '\IdnoPlugins\Known\Pages\Admin');
 	    // Register settings page
