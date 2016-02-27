@@ -54,7 +54,7 @@ namespace IdnoPlugins\Known {
 			    // Handle image
 			    if (count($_FILES)) {
 				foreach ($_FILES as $file => $data) {
-				    $parameters[$file] = "@{$data['tmp_name']};filename={$data['name']};type={$data['type']}";
+				    $parameters[$file] = \Idno\Core\Webservice::fileToCurlFile("@{$data['tmp_name']};filename={$data['name']};type={$data['type']}");
 				}
 			    }
 
